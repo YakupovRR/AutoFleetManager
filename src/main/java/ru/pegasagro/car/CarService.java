@@ -6,8 +6,6 @@ import ru.pegasagro.owner.Owner;
 import ru.pegasagro.owner.OwnerRepository;
 
 import javax.persistence.EntityNotFoundException;
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class CarService {
@@ -43,13 +41,4 @@ public class CarService {
         car.setOwner(null);
         carRepository.save(car);
     }
-
-    private CarDTO mapToCarDTO(Car car) {
-        return CarDTO.builder()
-                .idCar(car.getIdCar())
-                .assemblyDate(car.getAssemblyDate())
-                .uniqueNumber(car.getUniqueNumber())
-                .build();
-    }
-
 }

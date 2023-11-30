@@ -12,9 +12,7 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-//@Data
-@Getter
-@Setter
+@Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor

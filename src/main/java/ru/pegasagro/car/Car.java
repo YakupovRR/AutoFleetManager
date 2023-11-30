@@ -1,6 +1,5 @@
 package ru.pegasagro.car;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 import ru.pegasagro.owner.Owner;
@@ -9,9 +8,7 @@ import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
-//@Data
-@Getter
-@Setter
+@Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor

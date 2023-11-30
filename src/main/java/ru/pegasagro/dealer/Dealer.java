@@ -1,6 +1,5 @@
 package ru.pegasagro.dealer;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
@@ -10,9 +9,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-//@Data
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "dealer")
