@@ -8,7 +8,6 @@ import ru.pegasagro.car.Car;
 import ru.pegasagro.dealer.Dealer;
 
 import javax.persistence.*;
-import java.util.Date;
 import java.util.List;
 
 @Entity

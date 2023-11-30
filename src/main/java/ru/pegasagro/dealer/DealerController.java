@@ -1,19 +1,16 @@
 package ru.pegasagro.dealer;
 
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.pegasagro.car.CarDTO;
-import ru.pegasagro.owner.Owner;
 import ru.pegasagro.owner.OwnerDTO;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/dealers")
-@Slf4j
 public class DealerController {
 
     private final DealerService dealerService;

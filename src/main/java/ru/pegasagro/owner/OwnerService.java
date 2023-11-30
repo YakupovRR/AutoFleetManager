@@ -58,7 +58,6 @@ public class OwnerService {
         List<Car> ownedCars = owner.getOwnedCars();
         List<CarDTO> carDTOs = new ArrayList<>();
         for (Car car : ownedCars) {
-            OwnerDTO ownerDTO = OwnerDTO.fromEntity(owner);
             CarDTO carDTO = CarDTO.builder()
                     .idCar(car.getIdCar())
                     .assemblyDate(car.getAssemblyDate())
