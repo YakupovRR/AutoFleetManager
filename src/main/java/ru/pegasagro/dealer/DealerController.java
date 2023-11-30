@@ -25,7 +25,6 @@ public class DealerController {
 
     @GetMapping("/test")
     public String test() {
-        log.info("Тестовое подключение");
         return ("Test connection to dealers");
     }
 

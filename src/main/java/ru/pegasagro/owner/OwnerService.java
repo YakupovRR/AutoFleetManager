@@ -9,6 +9,8 @@ import ru.pegasagro.dealer.Dealer;
 import ru.pegasagro.dealer.DealerDTO;
 
 import javax.persistence.EntityNotFoundException;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -36,10 +38,10 @@ public class OwnerService {
                 .orElseThrow(() -> new EntityNotFoundException("Car with id " + carId + " not found"));
 
         owner.getOwnedCars().add(car);
-        car.setOwner(owner);
+//        car.setOwner(owner);
 
         ownerRepository.save(owner);
-        carRepository.save(car);
+//        carRepository.save(car);
     }
 
     public void removeDealerFromOwner(Long ownerId) {
@@ -54,11 +56,27 @@ public class OwnerService {
         Owner owner = ownerRepository.findById(ownerId)
                 .orElseThrow(() -> new EntityNotFoundException("Owner not found with id: " + ownerId));
 
+        if (owner == null) {
+            return Collections.emptyList();
+        }
+
         List<Car> ownedCars = owner.getOwnedCars();
-        return ownedCars.stream()
-                .map(this::mapToCarDTO)
-                .collect(Collectors.toList());
+        List<CarDTO> carDTOs = new ArrayList<>();
+        for (Car car : ownedCars) {
+            OwnerDTO ownerDTO = OwnerDTO.fromEntity(owner);
+            CarDTO carDTO = CarDTO.builder()
+                    .idCar(car.getIdCar())
+                    .assemblyDate(car.getAssemblyDate())
+                    .uniqueNumber(car.getUniqueNumber())
+//                    .owner(ownerDTO)
+                    .build();
+
+            carDTOs.add(carDTO);
+        }
+
+        return carDTOs;
     }
+
 
     private List<CarDTO> mapToCarDTOList(List<Car> cars) {
         return cars.stream()
@@ -72,7 +90,7 @@ public class OwnerService {
                     .idCar(car.getIdCar())
                     .assemblyDate(car.getAssemblyDate())
                     .uniqueNumber(car.getUniqueNumber())
-                    .owner(mapToOwnerDTO(car.getOwner()))
+//                    .owner(mapToOwnerDTO(car.getOwner()))
                     .build();
         } else {
             return null;
@@ -86,7 +104,7 @@ public class OwnerService {
                     .fullNameOwner(owner.getFullNameOwner())
                     .phoneNumberOwner(owner.getPhoneNumberOwner())
                     .emailOwner(owner.getEmailOwner())
-                    .dealer(mapToDealerDTO(owner.getDealer()))
+                //    .dealer(mapToDealerDTO(owner.getDealer()))
                     .ownedCars(mapToCarDTOList(owner.getOwnedCars()))
                     .build();
         } else {
@@ -101,7 +119,7 @@ public class OwnerService {
                     .nameDealer(dealer.getNameDealer())
                     .emailDealer(dealer.getEmailDealer())
                     .representativeName(dealer.getRepresentativeName())
-                    .owners(mapToOwnerDTOList(dealer.getOwners()))
+                  //  .owners(mapToOwnerDTOList(dealer.getOwners()))
                     .build();
         } else {
             return null;

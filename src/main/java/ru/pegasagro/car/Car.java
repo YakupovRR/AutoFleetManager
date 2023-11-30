@@ -2,17 +2,16 @@ package ru.pegasagro.car;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import ru.pegasagro.owner.Owner;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
-@Data
+//@Data
+@Getter
+@Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -31,6 +30,5 @@ public class Car {
 
     @ManyToOne
     @JoinColumn(name = "idowner")
-    @JsonBackReference
     private Owner owner;
 }

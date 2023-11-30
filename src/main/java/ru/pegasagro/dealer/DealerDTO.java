@@ -2,12 +2,16 @@ package ru.pegasagro.dealer;
 
 import lombok.Builder;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import ru.pegasagro.owner.OwnerDTO;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Data
+//@Data
+@Getter
+@Setter
 @Builder
 public class DealerDTO {
     private Long idDealer;
