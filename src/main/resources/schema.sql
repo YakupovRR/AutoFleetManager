@@ -5,19 +5,21 @@ CREATE TABLE IF NOT EXISTS dealer (
     representativename VARCHAR(255)
 );
 
+
 CREATE TABLE IF NOT EXISTS owner (
     idowner SERIAL PRIMARY KEY,
     fullnameowner VARCHAR(255) NOT NULL,
     phonenumberowner VARCHAR(20),
     emailowner VARCHAR(255),
-    dealerid BIGINT,
-    FOREIGN KEY (dealerid) REFERENCES dealer(id)
+    iddealer BIGINT,
+    FOREIGN KEY (iddealer) REFERENCES dealer(iddealer)
 );
+
 
 CREATE TABLE IF NOT EXISTS car (
     idcar SERIAL PRIMARY KEY,
     uniquenumber VARCHAR(255) NOT NULL,
     assemblydate DATE,
-    ownerid BIGINT,
-    FOREIGN KEY (ownerid) REFERENCES owner(id)
+    idowner BIGINT,
+    FOREIGN KEY (idowner) REFERENCES owner(idowner)
 );
