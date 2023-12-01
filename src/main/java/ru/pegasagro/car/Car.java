@@ -13,7 +13,6 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "car")
-@JsonIgnoreProperties("owner")
 public class Car {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -16,7 +16,6 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "owner")
-@JsonIgnoreProperties({"dealer", "ownedCars"})
 public class Owner {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -37,6 +36,5 @@ public class Owner {
     private Dealer dealer;
 
     @OneToMany(mappedBy = "owner", fetch = FetchType.EAGER)
-    @JsonManagedReference
     private List<Car> ownedCars;
 }
