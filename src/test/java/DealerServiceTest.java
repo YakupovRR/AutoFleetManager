@@ -8,7 +8,6 @@ import ru.pegasagro.dealer.DealerRepository;
 import ru.pegasagro.dealer.DealerService;
 import ru.pegasagro.owner.Owner;
 import ru.pegasagro.owner.OwnerRepository;
-import ru.pegasagro.owner.OwnerService;
 
 
 import java.util.Optional;
@@ -23,9 +22,6 @@ public class DealerServiceTest {
 
     @Mock
     private OwnerRepository ownerRepository;
-
-    @Mock
-    private OwnerService ownerService;
 
     @InjectMocks
     private DealerService dealerService;
